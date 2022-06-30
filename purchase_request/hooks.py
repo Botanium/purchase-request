@@ -139,9 +139,9 @@ app_license = "MIT"
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,
 # along with any modifications made in other Frappe apps
-# override_doctype_dashboards = {
-# 	"Task": "purchase_request.task.get_dashboard_data"
-# }
+override_doctype_dashboards = {
+	# "Purchase Order": "purchase_request.custom_hooks.purchase_order_dashboard.get_data"
+}
 
 # exempt linked doctypes from being automatically cancelled
 #
