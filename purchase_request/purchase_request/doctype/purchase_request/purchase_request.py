@@ -21,3 +21,21 @@ def create_purchase_order(source, target_doc=None):
 								}, target_doc)
 
 	return target_doc
+
+
+@frappe.whitelist()
+def create_purchase_request(source, target_doc=None):
+	target_doc = get_mapped_doc("Material Request", source,
+								{"Material Request": {
+									"doctype": "Purchase Request",
+									"field_map": {
+										"material_request": "name",
+										"transaction_date": "transaction_date",
+									}
+								},
+								"Material Request Item": {
+									"doctype": "Purchase Order Item"
+								}
+								}, target_doc)
+
+	return target_doc

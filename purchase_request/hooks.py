@@ -141,6 +141,7 @@ app_license = "MIT"
 # along with any modifications made in other Frappe apps
 override_doctype_dashboards = {
 	# "Purchase Order": "purchase_request.custom_hooks.purchase_order_dashboard.get_data"
+	"Material Request": "purchase_request.custom_hooks.material_request_dashboard.get_data"
 }
 
 # exempt linked doctypes from being automatically cancelled

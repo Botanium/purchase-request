@@ -8,6 +8,7 @@
  "engine": "InnoDB",
  "field_order": [
   "supplier_section",
+  "material_request",
   "title",
   "naming_series",
   "supplier",
@@ -1161,13 +1162,20 @@
    "fieldtype": "Link",
    "label": "Project",
    "options": "Project"
+  },
+  {
+   "fieldname": "material_request",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Material Request",
+   "options": "Material Request"
   }
  ],
  "icon": "fa fa-file-text",
  "idx": 105,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-06-30 17:50:16.688759",
+ "modified": "2022-07-02 20:59:06.599558",
  "modified_by": "Administrator",
  "module": "Purchase Request",
  "name": "Purchase Request",
