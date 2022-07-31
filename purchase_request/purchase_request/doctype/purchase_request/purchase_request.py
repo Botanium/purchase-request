@@ -17,9 +17,22 @@ from erpnext.stock.stock_balance import get_indented_qty, update_bin_qty
 from frappe.model.document import Document
 from erpnext.stock.doctype.material_request.material_request import set_missing_values, update_item
 
+from datetime import datetime
+
 
 class PurchaseRequest(Document):
 	# pass
+
+	def validate(self):
+		self.validate_required_date()
+
+	def validate_required_date(self):
+		
+		for i in self.items:
+			if datetime.strptime(i.schedule_date, "%Y-%m-%d") < datetime.now():
+				frappe.throw("Row #{}: Reqd by Date cannot be before Transaction Date".format(i.idx))
+
+
 
 	def on_submit(self):
 		set_mr_status(self.material_request, 1, 0)

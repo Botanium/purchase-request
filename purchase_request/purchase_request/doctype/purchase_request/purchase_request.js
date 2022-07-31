@@ -57,6 +57,10 @@ frappe.ui.form.on("Purchase Request", {
 		frm.trigger('get_materials_from_supplier');
 	},
 
+	validate: function(frm){
+		frm.cscript.calculate_taxes_and_totals()
+	},
+
 	get_materials_from_supplier: function(frm) {
 		let po_details = [];
 
