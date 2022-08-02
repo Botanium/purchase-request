@@ -25,6 +25,8 @@ class PurchaseRequest(Document):
 
 	def validate(self):
 		self.validate_required_date()
+		frappe.db.set_value("Material Request", self.material_request, "purchase_request", self.name, update_modified=False)
+
 
 	def validate_required_date(self):
 		
@@ -43,6 +45,7 @@ def set_mr_status(mr, has_pr=0, has_po=0):
 	status = frappe.db.get_value("Material Request", mr, 'status')
 	if has_pr == 1 and has_po == 0:
 		status = 'Requested'
+		frappe.db.set_value("Material Request", mr, "status", status)
 	elif has_pr == 1 and has_po == 1:
 		status = 'Ordered'
 	else: 
