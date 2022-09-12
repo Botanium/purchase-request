@@ -27,6 +27,9 @@ class PurchaseRequest(Document):
 		self.validate_required_date()
 		frappe.db.set_value("Material Request", self.material_request, "purchase_request", self.name, update_modified=False)
 
+	def on_trash(self): 
+		frappe.db.set_value("Material Request", {"purchase_request": self.name}, "purchase_request", "")
+
 
 	def validate_required_date(self):
 		
