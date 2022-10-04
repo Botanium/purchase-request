@@ -8,7 +8,7 @@ def get_data():
 			{
 				'label': _('Related'),
 				'items': [
-					'Purchase Order',
+					"Purchase Order",
 					"Material Request"
 				]
 			}

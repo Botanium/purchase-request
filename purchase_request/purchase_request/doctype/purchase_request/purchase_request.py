@@ -22,10 +22,12 @@ from datetime import datetime
 
 class PurchaseRequest(Document):
 	# pass
+	def after_insert(self):
+		frappe.db.set_value("Material Request", self.material_request, "purchase_request", self.name, update_modified=True)
 
 	def validate(self):
 		self.validate_required_date()
-		frappe.db.set_value("Material Request", self.material_request, "purchase_request", self.name, update_modified=False)
+		frappe.db.set_value("Material Request", self.material_request, "purchase_request", self.name, update_modified=True)
 
 	def on_trash(self): 
 		frappe.db.set_value("Material Request", {"purchase_request": self.name}, "purchase_request", "")
